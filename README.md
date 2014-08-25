@@ -31,11 +31,11 @@ angular
 
     <div ng-repeat="item in main.items">
 
-      <a class="showcase" event-delegate-target="main.clicky(item.value)">{{ item.name }}</a>
-      <span class="infotext" event-delegate-target="item.showy=!item.showy">
+      <a class="showcase" event-delegate-target="main.clicky(item.value)">Click: [ {{ item.name }} ]</a>
+      <div class="infotext" event-delegate-target="item.showy=!item.showy">
         Toggle on mouseenter
         <span ng-show="item.showy">Showing</span>
-      </span>
+      </div>
 
     </div>
 

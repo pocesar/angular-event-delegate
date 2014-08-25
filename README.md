@@ -1,7 +1,9 @@
 angular-event-delegate
 ======================
 
-Use a common parent to delegate events to underlaying DOM elements using jQuery
+Use a common parent to delegate events to underlaying DOM elements using jQuery. 
+
+[DEMO](http://plnkr.co/edit/wTjaeI9RAoPwy4Nkycwk?p=preview)
 
 Usage
 =================
@@ -26,19 +28,19 @@ angular
 <div ng-controller="MainCtrl as main">
 
   <div event-delegate="{'click': '.showcase', 'mouseenter': '.infotext'}">
-  
+
     <div ng-repeat="item in main.items">
-    
+
       <a class="showcase" event-delegate-target="main.clicky(item.value)">{{ item.name }}</a>
-      <span class="infotext" event-delegate-target="item.showy=true">
-        Stuff
+      <span class="infotext" event-delegate-target="item.showy=!item.showy">
+        Toggle on mouseenter
         <span ng-show="item.showy">Showing</span>
       </span>
-      
+
     </div>
-    
+
   </div>
-  
+
 </div>
 ```
 

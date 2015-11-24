@@ -18,7 +18,7 @@
   
                               if (fn = target.data('EventDelegateTarget')) {
                                   scope.$apply(function () {
-                                      return fn(target.scope());
+                                      return fn(target.scope(), { $event: e });
                                   });
                               }
                           });

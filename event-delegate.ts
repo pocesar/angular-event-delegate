@@ -19,10 +19,10 @@ module EventDelegate {
 
                             var
                                 target: ng.IAugmentedJQuery = angular.element(e.currentTarget),
-                                fn: ng.IInterpolationFunction;
+                                fn: ng.ICompiledExpression;
 
                             if (fn = target.data('EventDelegateTarget')) {
-                                scope.$apply(() => fn(target.scope()));
+                                scope.$apply(() => fn(target.scope(), { $event: e }));
                             }
                         });
 

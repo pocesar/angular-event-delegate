@@ -1,0 +1,12 @@
+{
+  "name":"angular-event-delegate",
+  "description":"Use a common parent to delegate events to underlaying DOM elements using jQuery.",
+  "main":"./event-delegate.js",
+  "ignore":[],
+  "keywords":["angular","delegate","event"],
+  "moduleType":"globals",
+  "dependencies":{
+    "jquery":"<3",
+    "angular":">=1.3 <2"
+  }
+}

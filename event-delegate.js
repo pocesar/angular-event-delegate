@@ -14,11 +14,11 @@
                           el.on(event + '.eventDelegate', selector, function (e) {
                               e.preventDefault();
   
-                              var target = angular.element(e.currentTarget), fn, scope;
+                              var target = angular.element(e.currentTarget), fn, targetScope;
   
-                              if ((fn = target.data('EventDelegateTarget')) && (scope = target.data('EventDelegateTargetScope'))) {
+                              if ((fn = target.data('EventDelegateTarget')) && (targetScope = target.data('EventDelegateTargetScope'))) {
                                   scope.$apply(function () {
-                                      return fn(target.scope(), { $event: e });
+                                      return fn(targetScope, { $event: e });
                                   });
                               }
                           });

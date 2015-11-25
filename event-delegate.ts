@@ -20,10 +20,10 @@ module EventDelegate {
                             var
                                 target: ng.IAugmentedJQuery = angular.element(e.currentTarget),
                                 fn: ng.ICompiledExpression,
-                                scope: ng.IScope;
+                                targetScope: ng.IScope;
 
-                            if ((fn = target.data('EventDelegateTarget')) && (scope = target.data('EventDelegateTargetScope'))) {
-                                scope.$apply(() => fn(target.scope(), { $event: e }));
+                            if ((fn = target.data('EventDelegateTarget')) && (targetScope = target.data('EventDelegateTargetScope'))) {
+                                scope.$apply(() => fn(targetScope, { $event: e }));
                             }
                         });
 

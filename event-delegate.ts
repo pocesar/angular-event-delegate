@@ -19,9 +19,10 @@ module EventDelegate {
 
                             var
                                 target: ng.IAugmentedJQuery = angular.element(e.currentTarget),
-                                fn: ng.ICompiledExpression;
+                                fn: ng.ICompiledExpression,
+                                scope: ng.IScope;
 
-                            if (fn = target.data('EventDelegateTarget')) {
+                            if ((fn = target.data('EventDelegateTarget')) && (scope = target.data('EventDelegateTargetScope'))) {
                                 scope.$apply(() => fn(target.scope(), { $event: e }));
                             }
                         });
@@ -50,7 +51,10 @@ module EventDelegate {
                 this.link = (scope, el, attr) => {
 
                     attr.$observe('eventDelegateTarget', (att) => {
-                        el.data('EventDelegateTarget', $parse(att));
+                        el.data({
+                            'EventDelegateTarget': $parse(att),
+                            'EventDelegateTargetScope': scope
+                        });
                     });
 
                 };

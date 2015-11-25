@@ -14,9 +14,9 @@
                           el.on(event + '.eventDelegate', selector, function (e) {
                               e.preventDefault();
   
-                              var target = angular.element(e.currentTarget), fn;
+                              var target = angular.element(e.currentTarget), fn, scope;
   
-                              if (fn = target.data('EventDelegateTarget')) {
+                              if ((fn = target.data('EventDelegateTarget')) && (scope = target.data('EventDelegateTargetScope'))) {
                                   scope.$apply(function () {
                                       return fn(target.scope(), { $event: e });
                                   });
@@ -46,7 +46,10 @@
                   this.restrict = 'A';
                   this.link = function (scope, el, attr) {
                       attr.$observe('eventDelegateTarget', function (att) {
-                          el.data('EventDelegateTarget', $parse(att));
+                          el.data({
+                              'EventDelegateTarget': $parse(att),
+                              'EventDelegateTargetScope': scope
+                          });
                       });
                   };
               }
